@@ -1,0 +1,162 @@
+openapi: 3.0.1
+info:
+  title: API - Authorizer
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+tags:
+  - name: MCC
+    description: API para gerenciamento de requisições do Authorizer Caju
+paths:
+  /authorizer/v1/caju/compra:
+    put:
+      tags:
+        - MCC
+      summary: Efetua compra portador
+      operationId: updateSaldo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestCompraDto'
+        required: true
+      responses:
+        '200':
+          description: Operação efetuada com sucesso
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RespostaDTOObject'
+  /authorizer/v1/caju/saldo/accountId/{accountId}:
+    get:
+      tags:
+        - MCC
+      summary: 'Obtém saldo portador '
+      operationId: getSaldo
+      parameters:
+        - name: accountId
+          in: path
+          description: accountId
+          required: true
+          schema:
+            type: integer
+            format: int32
+          example: 123
+      responses:
+        '200':
+          description: Operação efetuada com sucesso
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RespostaSaldoDTOObject'
+  /authorizer/v1/caju:
+    get:
+      tags:
+        - controller-principal
+      operationId: init
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      tags:
+        - controller-principal
+      operationId: init_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+        - controller-principal
+      operationId: init_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+        - controller-principal
+      operationId: init_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+    options:
+      tags:
+        - controller-principal
+      operationId: init_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+    head:
+      tags:
+        - controller-principal
+      operationId: init_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+    patch:
+      tags:
+        - controller-principal
+      operationId: init_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+components:
+  schemas:
+    RequestCompraDto:
+      type: object
+      properties:
+        account:
+          type: string
+        totalAmount:
+          type: number
+          format: double
+        mcc:
+          type: string
+        merchant:
+          type: string
+    RespostaDTOObject:
+      type: object
+      properties:
+        code:
+          type: string
+        mensagem:
+          type: string
+    RespostaSaldoDTOObject:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        code:
+          type: string
+        mensagem:
+          type: string

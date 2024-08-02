@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "df59153e-d6fc-4786-b822-5a1e13db8d35",
+		"name": "Caju - APIAuthorizer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CT 00 - GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/authorizer/v1/caju",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authorizer",
+						"v1",
+						"caju"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT 01 - GET Saldo - Sucesso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/authorizer/v1/caju/saldo/accountId/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authorizer",
+						"v1",
+						"caju",
+						"saldo",
+						"accountId",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT 02 - Portador inexistente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account\": \"99\",\r\n    \"totalAmount\": 0.00,\r\n    \"mcc\": \"9999\",\r\n    \"merchant\": \"TESTE\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authorizer/v1/caju/compra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authorizer",
+						"v1",
+						"caju",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT 03 - Compra 100 - Sucesso",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account\": \"1\",\r\n    \"totalAmount\": 100.00,\r\n    \"mcc\": \"5411\",\r\n    \"merchant\": \"MERCEARIAS/SUPERMERCADOS\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authorizer/v1/caju/compra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authorizer",
+						"v1",
+						"caju",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT 04 - Compra 2000 - Falha saldo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account\": \"1\",\r\n    \"totalAmount\": 2000.00,\r\n    \"mcc\": \"5412\",\r\n    \"merchant\": \"MERCEARIAS/SUPERMERCADOS\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authorizer/v1/caju/compra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authorizer",
+						"v1",
+						"caju",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT 05 - Compra 2000 - Sucesso Mcc Food + Saldo Cash",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account\": \"1\",\r\n    \"totalAmount\": 500.00,\r\n    \"mcc\": \"5412\",\r\n    \"merchant\": \"MERCEARIAS/SUPERMERCADOS\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authorizer/v1/caju/compra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authorizer",
+						"v1",
+						"caju",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT 06 - Compra 2000 - Sucesso Mcc Cash",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account\": \"3\",\r\n    \"totalAmount\": 129.99,\r\n    \"mcc\": \"0742\",\r\n    \"merchant\": \"VETERINARIO\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authorizer/v1/caju/compra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authorizer",
+						"v1",
+						"caju",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT 07 - Compra 100 - Sucesso Obs: Codigo MCC inexistente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account\": \"2\",\r\n    \"totalAmount\": 100.00,\r\n    \"mcc\": \"5999\",\r\n    \"merchant\": \"LOJA PRODUTOS DE LIMPEZA\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authorizer/v1/caju/compra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authorizer",
+						"v1",
+						"caju",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT 08 - Compra sem valor- Falha",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account\": \"2\",\r\n    \"totalAmount\": 0.00,\r\n    \"mcc\": \"5999\",\r\n    \"merchant\": \"LOJA PRODUTOS DE LIMPEZA\"\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authorizer/v1/caju/compra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authorizer",
+						"v1",
+						"caju",
+						"compra"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

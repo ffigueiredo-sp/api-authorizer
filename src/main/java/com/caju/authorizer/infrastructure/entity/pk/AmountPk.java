@@ -1,0 +1,16 @@
+package com.caju.authorizer.infrastructure.entity.pk;
+
+import java.io.Serializable;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class AmountPk implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	private int id;
+	private int accountId;
+
+}
